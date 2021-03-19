@@ -1,14 +1,18 @@
+
 const express = require('express');
+const mysql = require('mysql');
+const dbconfig = require('./BackEnd/database.js');
+const connection = mysql.createConnection(dbconfig);
+
 const app = express();
-const {init} = require('./BackEnd/database')
+
+app.set('port', process.env.PORT || 3333);
 
 app.use(express.static('FrontEnd')); 
-
-init()();
 
 app.get('/', (req, res) => {
     res.sendFile('/FrontEnd/index.html');
 }); 
-app.listen(3333, () => {
-    console.log("Listening on port 3333!");
+app.listen(app.get('port'), () => {
+    console.log("Listening on port " + app.get('port'));
 });
