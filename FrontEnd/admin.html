@@ -11,7 +11,7 @@
 
     <div class="container">
         <div id="question">
-            <form action="" class="mt-3">
+            <form action="/question/add" class="mt-3" method="POST">
               <p>Question 1</p>
                 <div class="form-group">
                     <textarea class="form-control textarea" rows="3"></textarea>
@@ -22,7 +22,7 @@
                         <input type="radio"name="radio" class="radio" value="0">
                        </div>
                     </div>
-                    <input type="text" class="form-control choice">
+                    <input type="text" class="form-control choice a1" name="choice1">
                 </div>
                 
                 <div class="input-group">
@@ -31,7 +31,7 @@
                         <input type="radio"  name="radio" class="radio" value="1">
                       </div>
                     </div>
-                    <input type="text" class="form-control choice" >
+                    <input type="text" class="form-control choice a2" name="choice2">
                   </div>
                   <div class="input-group">
                     <div class="input-group-prepend">
@@ -39,7 +39,7 @@
                        <input type="radio"  name="radio" class="radio" value="2">
                       </div>
                     </div>
-                    <input type="text" class="form-control choice">
+                    <input type="text" class="form-control choice a3" name="choice3">
                   </div>
                   <div class="input-group">
                     <div class="input-group-prepend">
@@ -47,12 +47,15 @@
                         <input type="radio" name="radio" class="radio" value="3">
                       </div>
                     </div>
-                    <input type="text" class="form-control choice" >
+                    <input type="text" class="form-control choice a4" name="choice4">
                   </div>
             </form>
             <input class="btn btn-primary" type="button" value="Create" id="create_btn" />
             <input class="btn btn-primary" type="button" value="Delete" id="delete_btn" />
-            <input class="btn btn-primary" type="button" value="Save" id="save_btn" />
+            <form method="POST" action="/admin/save">
+              <input class="btn btn-primary" type="button" value="Save" id="save_btn" />
+            </form>
+            
             <p id="demo"></p>
 
           </div>
