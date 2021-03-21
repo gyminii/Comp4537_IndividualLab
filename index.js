@@ -2,15 +2,13 @@ const express = require("express");
 const mysql = require("mysql");
 const app = express();
 const dbconfig = require("./BackEnd/database.js");
-const index_page = require("index");
-const admin_page = require("./FrontEnd/admin");
-const student_page = require("./FrontEnd/student");
 const connection = mysql.createPool(dbconfig);
 const port = 3333;
 
 app.use(express.urlencoded({ extended: false }));
+
 app.use(express.json());
-app.use("/", index_page);
+
 app.use(express.static("FrontEnd"));
 
 // let sql = "SELECT * FROM Q_table";
@@ -33,13 +31,24 @@ app.use(express.static("FrontEnd"));
 //     }
 //   }
 // });
-app.post("/question/add", (req, res) => {
+app.get("/", (req, res) => {
+  res.render("./FrontEnd/index.html");
+});
+
+app.post("/question/save", (req, res) => {
   let sql = "insert into Q_table (Question, a1, a2, a3, a4) values(?, ?, ?, ?)";
-  connection.query(sql, question, (err, result, field) => {
+  let question = req.body.question;
+  let a1 = req.body.a1;
+  let a2 = req.body.a2;
+  let a3 = req.body.a3;
+  let a4 = req.body.a4;
+  let params = [question, a1, a2, a3, a4];
+  connection.query(sql, params, (err, result, field) => {
     if (err) {
       console.error(err);
       res.status(500).send("internal server error");
     }
+    res.redirect("/");
   });
 });
 

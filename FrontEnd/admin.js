@@ -1,6 +1,7 @@
 const create_btn = document.getElementById("create_btn");
 const delete_btn = document.getElementById("delete_btn");
 const save_btn = document.getElementById("save_btn");
+const edit_btn = document.getElementById("edit_btn");
 
 const sql = "SELECT * FROM Q_table";
 
@@ -54,3 +55,5 @@ save_btn.addEventListener("click", () => {
       }
     });
 });
+
+edit_btn.addEventListener("click", () => {});
