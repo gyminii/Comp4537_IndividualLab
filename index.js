@@ -3,7 +3,7 @@ const mysql = require("mysql");
 const app = express();
 const dbconfig = require("./BackEnd/database.js");
 const connection = mysql.createPool(dbconfig);
-const port = 3333;
+const port = process.env.port || 3333;
 
 app.use(express.urlencoded({ extended: false }));
 
